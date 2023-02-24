@@ -17,13 +17,7 @@ class Product {
     public function create(){
         //Insert Product in Database
         $objectDatabase = new Database('products');
-        $this->id = $objectDatabase->insert([
-            "sku" => $this->getSku(),
-            "name" => $this->getName(),
-            "price" => $this->getPrice(),
-            "measure" => $this->getMeasure()
-        ]);
-
+        $this->setId($objectDatabase->insert(["sku" => $this->getSku(),"name" => $this->getName(),"price" => $this->getPrice(),"measure" => $this->getMeasure()])) ;
         //atribuir o ID do Produto na instancia
         //retornar sucesso
         return true;

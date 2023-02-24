@@ -3,20 +3,20 @@ require __DIR__ . '/vendor/autoload.php';
 
 use \App\Entity\Product;
 
-if (!isset($_POST['select_specific_product'])) {
-    $typeProduct = 1;
-} else {
+if(!isset($_POST['select_specific_product'])){
+    $typeProduct = 'DVD';
+}else {
     $typeProduct = $_POST['select_specific_product'];
 }
 
+
 switch ($typeProduct) {
-    case '1':
+    case 'DVD':
         if (isset($_POST['sku_product'], $_POST['name_product'], $_POST['price_product'], $_POST['tamanho_product_dvd'])) {
             $objectProduct = new Product();
             $skusBd = $objectProduct->getNameSku();
             foreach ($skusBd as $product) {
-                if (strcasecmp($product->sku, $_POST['sku_product']) == 0) {
-                    echo  "<script>alert('SKU ALREADY REGISTERED!);</script>";
+                if (strcasecmp($product->getSku(), $_POST['sku_product']) == 0) {
                     header('location: index.php?status=error');
                     exit;
                 }
@@ -30,13 +30,12 @@ switch ($typeProduct) {
             exit;
         }
         break;
-    case '2':
+    case 'Book':
         if (isset($_POST['sku_product'], $_POST['name_product'], $_POST['price_product'], $_POST['tamanho_product_book'])) {
             $objectProduct = new Product();
             $skusBd = $objectProduct->getSku();
             foreach ($skusBd as $product) {
-                if (strcasecmp($product->sku, $_POST['sku_product']) == 0) {
-                    echo  "<script>alert('SKU ALREADY REGISTERED!);</script>";
+                if (strcasecmp($product->getSku(), $_POST['sku_product']) == 0) {
                     header('location: index.php?status=error');
                     exit;
                 }
@@ -48,14 +47,14 @@ switch ($typeProduct) {
             $objectProduct->create();
         }
         break;
-    case '3':
+    case 'Furniture':
         $dimensions = '';
         $dimensions = $_POST['tamanho_product_furniture_height'] .'x'.$_POST['tamanho_product_furniture_width'] .'x'.$_POST['tamanho_product_furniture_lenght'];
         if (isset($_POST['sku_product'], $_POST['name_product'], $_POST['price_product'], $dimensions)) {
             $objectProduct = new Product();
             $skusBd = $objectProduct->getSku();
             foreach ($skusBd as $product) {
-                if (strcasecmp($product->sku, $_POST['sku_product']) == 0) {
+                if (strcasecmp($product->getSku(), $_POST['sku_product']) == 0) {
                     echo  "<script>alert('SKU ALREADY REGISTERED!);</script>";
                     header('location: index.php?status=error');
                     exit;

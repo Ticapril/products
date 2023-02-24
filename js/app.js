@@ -1,14 +1,18 @@
-document.getElementById("types").onclick = function() {
-    var types = document.getElementById("types");
+document.getElementById("productType").onclick = function() {
+    var types = document.getElementById("productType");
+    console.log('clicou!');
     idType = types.options[types.selectedIndex].value;
+    console.log(idType)
     switch (idType) {
-        case '1':
+        case 'DVD':
             //selecionar todos os forms dentro um array
-            if(document.getElementById("dvd").hasAttribute("disabled")){
-                document.getElementById("dvd").removeAttribute("disabled");
+            console.log(document.getElementById("size").hasAttribute("disabled"))
+            if(document.getElementById("size").hasAttribute("disabled")){
+                console.log(document.getElementById("size").hasAttribute("disabled"))
+                document.getElementById("size").removeAttribute("disabled");
             }
-            if(!document.getElementById("book").hasAttribute("disabled")){
-                document.getElementById("book").setAttribute("disabled", "");
+            if(!document.getElementById("weight").hasAttribute("disabled")){
+                document.getElementById("weight").setAttribute("disabled", "");
             }
             if(!document.getElementById("height").hasAttribute("disabled")){
                 document.getElementById("height").setAttribute("disabled", "");
@@ -16,13 +20,13 @@ document.getElementById("types").onclick = function() {
                 document.getElementById("lenght").setAttribute("disabled", "");
             }
             break;
-        case '2':
+        case 'Book':
                 //selecionar todos os forms dentro um array
-                if(!document.getElementById("dvd").hasAttribute("disabled")){
-                    document.getElementById("dvd").setAttribute("disabled", "");
+                if(!document.getElementById("size").hasAttribute("disabled")){
+                    document.getElementById("size").setAttribute("disabled", "");
                 }
-                if(document.getElementById("book").hasAttribute("disabled")){
-                    document.getElementById("book").removeAttribute("disabled");
+                if(document.getElementById("weight").hasAttribute("disabled")){
+                    document.getElementById("weight").removeAttribute("disabled");
                 }
                 if(!document.getElementById("height").hasAttribute("disabled")){
                     document.getElementById("height").setAttribute("disabled", "");
@@ -30,17 +34,17 @@ document.getElementById("types").onclick = function() {
                     document.getElementById("lenght").setAttribute("disabled", "");
                 }
             break;
-        case '3':
+        case 'Furniture':
                 if(document.getElementById("height").hasAttribute("disabled")){
                     document.getElementById("height").removeAttribute("disabled");
                     document.getElementById("width").removeAttribute("disabled");
                     document.getElementById("lenght").removeAttribute("disabled");
                 }
-                if(!document.getElementById("dvd").hasAttribute("disabled")){
-                    document.getElementById("dvd").setAttribute("disabled", "");
+                if(!document.getElementById("size").hasAttribute("disabled")){
+                    document.getElementById("size").setAttribute("disabled", "");
                 }
-                if(!document.getElementById("book").hasAttribute("disabled")){
-                    document.getElementById("book").setAttribute("disabled", "");
+                if(!document.getElementById("weight").hasAttribute("disabled")){
+                    document.getElementById("weight").setAttribute("disabled", "");
                 }
             break;
     }

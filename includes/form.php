@@ -9,9 +9,6 @@
             <div class="mt-2"><button type="submit" class="btn btn-success mb-3">SAVE</button></div>
             <div class="mt-2"><a href="index.php"><button type="button" class="btn btn-danger">CANCEL</button></a></div>
            </div>
-            
-            
-            
         </section>
         <hr>
    
@@ -39,7 +36,7 @@
                 $Test = new SpecificProduct();
                 $specificProducts = $Test->getCategories();
                 foreach ($specificProducts as $specificProduct) {
-                    echo '<option>'.$specificProduct->getName().'</option>';
+                    echo '<option name="'.$specificProduct->getName().'">'.$specificProduct->getName().'</option>';
                 }
                 ?>
             </select>
@@ -67,6 +64,5 @@
                 <input id="weight" type="text" class="form-control" name="tamanho_product_book" disabled />
             </div>
         </div>
-   
     </form>
 </main>
