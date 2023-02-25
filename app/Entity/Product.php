@@ -14,6 +14,7 @@ class Product {
     private $price;
     private $measure;
     //functions
+
     public function create(){
         //Insert Product in Database
         $objectDatabase = new Database('products');
@@ -38,6 +39,17 @@ class Product {
         // SELECT sku FROM `products`;
         return (new Database('products'))->select(null,null,null,'sku')
                                     ->fetchAll(PDO::FETCH_CLASS,self::class);
+    }
+    public function setInfoProduct($arrayInputs){
+        $this->setSku($arrayInputs[0]);
+        $this->setName($arrayInputs[1]);
+        $this->setPrice($arrayInputs[2]);
+        $this->setMeasure($arrayInputs[3]);
+        // executa a função para criar esse objeto no banco de dados
+        $this->create();
+        //redireciona para a pagina inicial   
+        header('location: index.php?status=success');
+        exit;
     }
     //Getters and Setters
     /**

@@ -1,5 +1,5 @@
 <form name="del-car" method="post" action="delete_mass.php">
-    <?php
+<?php
     $result = '';
     foreach ($products as $product) {
         $result .= '
@@ -9,9 +9,9 @@
                             </li>
                             </div>
                                 <div class="card-body text-center">
-                                    <p class="card-text">SKU: ' . strtoupper($product->getSku()) . '</p>
-                                    <p class="card-text">NAME: ' . $product->getName() . '</p>
-                                    <p class="card-text">PRICE: ' . number_format($product->getPrice(), 2) . ' $</p>
+                                    <p class="card-text">' . strtoupper($product->getSku()) . '</p>
+                                    <p class="card-text">' . $product->getName() . '</p>
+                                    <p class="card-text">' . number_format($product->getPrice(), 2) . ' $</p>
                                     <p class="card-text">' . $product->getMeasure() . '</p>
                                 </div>
                             </div>
@@ -23,7 +23,7 @@
         <section class="btn-group-form-page mt-3">
                 <h1>Product List</h1>
                 <div class="btn-group-form-page">
-                <div><a href="add-product.php"> <button type="button" class="btn btn-success mb-3">ADD</button></a></div>
+                <div><a href="process-product.php"> <button type="button" class="btn btn-success mb-3">ADD</button></a></div>
                 <div><a href="delete_mass.php"> <button name="del-product" class="btn btn-danger mb-3" id="delete-product-btn">MASS DELETE</button></a></div>
             </div>
         </section>

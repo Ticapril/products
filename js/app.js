@@ -17,7 +17,7 @@ document.getElementById("productType").onclick = function() {
             if(!document.getElementById("height").hasAttribute("disabled")){
                 document.getElementById("height").setAttribute("disabled", "");
                 document.getElementById("width").setAttribute("disabled", "");
-                document.getElementById("lenght").setAttribute("disabled", "");
+                document.getElementById("length").setAttribute("disabled", "");
             }
             break;
         case 'Book':
@@ -31,14 +31,14 @@ document.getElementById("productType").onclick = function() {
                 if(!document.getElementById("height").hasAttribute("disabled")){
                     document.getElementById("height").setAttribute("disabled", "");
                     document.getElementById("width").setAttribute("disabled", "");
-                    document.getElementById("lenght").setAttribute("disabled", "");
+                    document.getElementById("length").setAttribute("disabled", "");
                 }
             break;
         case 'Furniture':
                 if(document.getElementById("height").hasAttribute("disabled")){
                     document.getElementById("height").removeAttribute("disabled");
                     document.getElementById("width").removeAttribute("disabled");
-                    document.getElementById("lenght").removeAttribute("disabled");
+                    document.getElementById("length").removeAttribute("disabled");
                 }
                 if(!document.getElementById("size").hasAttribute("disabled")){
                     document.getElementById("size").setAttribute("disabled", "");

@@ -1,73 +1,18 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
-
 use \App\Entity\Product;
 
-if(!isset($_POST['select_specific_product'])){
-    $typeProduct = 'DVD';
-}else {
-    $typeProduct = $_POST['select_specific_product'];
+$itemSelected = $_POST['select_specific_product'];
+    if($itemSelected === 'DVD'){
+        $arrayInputs = [$_POST['sku_product'],$_POST['name_product'],$_POST['price_product'],'Size: '.$_POST['size_product_dvd'].' MB'];
+        $objectProduct = new Product();
+        $objectProduct->setInfoProduct($arrayInputs);
+    } else if($itemSelected === 'Book'){
+          $arrayInputs = [$_POST['sku_product'],$_POST['name_product'],$_POST['price_product'],'Size: '.$_POST['weight_product_book'].'KG'];
+          $objectProduct = new Product();
+          $objectProduct->setInfoProduct($arrayInputs);
+    } else {
+          $arrayInputs = [$_POST['sku_product'],$_POST['name_product'],$_POST['price_product'],'Dimension: '.$_POST['length_product_furniture']];
+          $objectProduct = new Product();
+          $objectProduct->setInfoProduct($arrayInputs);
 }
-
-
-switch ($typeProduct) {
-    case 'DVD':
-        if (isset($_POST['sku_product'], $_POST['name_product'], $_POST['price_product'], $_POST['tamanho_product_dvd'])) {
-            $objectProduct = new Product();
-            $skusBd = $objectProduct->getNameSku();
-            foreach ($skusBd as $product) {
-                if (strcasecmp($product->getSku(), $_POST['sku_product']) == 0) {
-                    header('location: index.php?status=error');
-                    exit;
-                }
-            }
-            $objectProduct->setSku($_POST['sku_product']) ;
-            $objectProduct->setName($_POST['name_product']) ;
-            $objectProduct->setPrice($_POST['price_product']) ;
-            $objectProduct->setMeasure('Size: '.$_POST['tamanho_product_dvd'].' MB');
-            $objectProduct->create();
-            header('location: index.php?status=success');
-            exit;
-        }
-        break;
-    case 'Book':
-        if (isset($_POST['sku_product'], $_POST['name_product'], $_POST['price_product'], $_POST['tamanho_product_book'])) {
-            $objectProduct = new Product();
-            $skusBd = $objectProduct->getSku();
-            foreach ($skusBd as $product) {
-                if (strcasecmp($product->getSku(), $_POST['sku_product']) == 0) {
-                    header('location: index.php?status=error');
-                    exit;
-                }
-            }
-            $objectProduct->setSku($_POST['sku_product']);
-            $objectProduct->setName($_POST['name_product']);
-            $objectProduct->setPrice($_POST['price_product']);
-            $objectProduct->setMeasure('Weight: '.$_POST['tamanho_product_book'].'KG');
-            $objectProduct->create();
-        }
-        break;
-    case 'Furniture':
-        $dimensions = '';
-        $dimensions = $_POST['tamanho_product_furniture_height'] .'x'.$_POST['tamanho_product_furniture_width'] .'x'.$_POST['tamanho_product_furniture_lenght'];
-        if (isset($_POST['sku_product'], $_POST['name_product'], $_POST['price_product'], $dimensions)) {
-            $objectProduct = new Product();
-            $skusBd = $objectProduct->getSku();
-            foreach ($skusBd as $product) {
-                if (strcasecmp($product->getSku(), $_POST['sku_product']) == 0) {
-                    echo  "<script>alert('SKU ALREADY REGISTERED!);</script>";
-                    header('location: index.php?status=error');
-                    exit;
-                }
-            }
-            $objectProduct->setSku($_POST['sku_product']);
-            $objectProduct->setName($_POST['name_product']);
-            $objectProduct->setPrice($_POST['price_product']);
-            $objectProduct->setMeasure('Dimension: '.$dimensions);
-            $objectProduct->create();
-        }
-        break;
-}
-include __DIR__ . '/includes/header.php';
-include __DIR__ . '/includes/form.php';
-include __DIR__ . '/includes/footer.php';

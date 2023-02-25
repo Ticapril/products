@@ -1,8 +1,6 @@
 <main class="container">
-
-    <form method="post" id="product_form">
+    <form method="post" id="product_form" action="add-product.php">
         <!-- BUTTON -->
-       
         <section class="btn-group-form-page">
             <h1>Product Add</h1>
             <div class="btn-group-form-page">
@@ -11,11 +9,10 @@
            </div>
         </section>
         <hr>
-   
         <!-- SKU -->
         <div class="form-group">
             <label>SKU</label>
-            <input id="sku" type="text" class="form-control" name="sku_product" />
+            <input id="sku" type="text" class="form-control" name="sku_product" required />
         </div>
         <!-- NAME -->
         <div class="form-group">
@@ -25,7 +22,7 @@
         <!-- PRICE -->
         <div class="form-group">
             <label>Price</label>
-            <input id="price" type="number" class="form-control" name="price_product" />
+            <input id="price" type="number" class="form-control" name="price_product" required />
         </div>
         <!-- TYPE PRODUCT -->
         <div class="form-group">
@@ -47,21 +44,21 @@
             <!-- SIZE -->
             <div class="form-group col">
                 <label>SIZE (MB)</label>
-                <input id="size" type="text" class="form-control" name="tamanho_product_dvd" disabled />
+                <input id="size" type="text" class="form-control" name="size_product_dvd" required disabled />
             </div>
             <!-- DIMENSION -->
             <div class="form-group col">
                 <label>Height</label>
-                <input id="height" type="text" class="form-control" name="tamanho_product_furniture_height" disabled />
+                <input id="height" type="text" class="form-control" name="product_furniture_height" required disabled />
                 <label>Width</label>
-                <input id="width" type="text" class="form-control" name="tamanho_product_furniture_width" disabled />
+                <input id="width" type="text" class="form-control" name="product_furniture_width" required disabled />
                 <label>Lenght</label>
-                <input id="lenght" type="text" class="form-control" name="tamanho_product_furniture_lenght" disabled />
+                <input id="length" type="text" class="form-control" name="product_furniture_lenght" required disabled />
             </div>
             <!-- WEIGHT -->
             <div class="form-group col">
                 <label>Weight (KG)</label>
-                <input id="weight" type="text" class="form-control" name="tamanho_product_book" disabled />
+                <input id="weight" type="text" class="form-control" name="weight_product_book" required disabled />
             </div>
         </div>
     </form>
