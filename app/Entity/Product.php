@@ -15,13 +15,19 @@ class Product {
     private $measure;
     //functions
 
-    public function create(){
+    public function create($measure){
+        //insert infomacoes no objeto antes de inserir no banco
+        $this->setSku($_POST['sku_product']);
+        $this->setName($_POST['name_product']);
+        $this->setPrice($_POST['price_product']);
+        $this->setMeasure($measure);
         //Insert Product in Database
         $objectDatabase = new Database('products');
         $this->setId($objectDatabase->insert(["sku" => $this->getSku(),"name" => $this->getName(),"price" => $this->getPrice(),"measure" => $this->getMeasure()])) ;
         //atribuir o ID do Produto na instancia
         //retornar sucesso
-        return true;
+        header('location: index.php?status=success');
+        exit;
     }
     public static function getProducts($where = null, $order = null, $limit = null){
         $objectDatabase = new Database('products');
@@ -40,17 +46,14 @@ class Product {
         return (new Database('products'))->select(null,null,null,'sku')
                                     ->fetchAll(PDO::FETCH_CLASS,self::class);
     }
-    public function setInfoProduct($arrayInputs){
-        $this->setSku($arrayInputs[0]);
-        $this->setName($arrayInputs[1]);
-        $this->setPrice($arrayInputs[2]);
-        $this->setMeasure($arrayInputs[3]);
-        // executa a função para criar esse objeto no banco de dados
-        $this->create();
-        //redireciona para a pagina inicial   
-        header('location: index.php?status=success');
-        exit;
-    }
+    // public function setInfoProduct($measure){
+        
+    //     // executa a função para criar esse objeto no banco de dados
+    //     $this->create();
+    //     //redireciona para a pagina inicial   
+    //     header('location: index.php?status=success');
+    //     exit;
+    // }
     //Getters and Setters
     /**
      * Get the value of id
