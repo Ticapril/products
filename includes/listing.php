@@ -23,8 +23,8 @@
         <section class="btn-group-form-page mt-3">
                 <h1>Product List</h1>
                 <div class="btn-group-form-page">
-                <div><a href="process-product.php"> <button type="button" class="btn btn-success mb-3">ADD</button></a></div>
-                <div><a href="delete_mass.php"> <button name="del-product" class="btn btn-danger mb-3" id="delete-product-btn">MASS DELETE</button></a></div>
+                <div><a href="process-product.php"><button type="button" class="btn btn-success mb-3">ADD</button></a></div>
+                <div><a href="delete_mass.php"><button name="del-product" class="btn btn-danger mb-3" id="delete-product-btn">MASS DELETE</button></a></div>
             </div>
         </section>
     <hr>

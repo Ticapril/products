@@ -6,7 +6,6 @@ use \PDO;
 use App\Db\Database;
 
 class Product {
-
     //atributes
     private $id;
     private $sku;
@@ -46,14 +45,6 @@ class Product {
         return (new Database('products'))->select(null,null,null,'sku')
                                     ->fetchAll(PDO::FETCH_CLASS,self::class);
     }
-    // public function setInfoProduct($measure){
-        
-    //     // executa a função para criar esse objeto no banco de dados
-    //     $this->create();
-    //     //redireciona para a pagina inicial   
-    //     header('location: index.php?status=success');
-    //     exit;
-    // }
     //Getters and Setters
     /**
      * Get the value of id
@@ -62,7 +53,6 @@ class Product {
     {
         return $this->id;
     }
-
     /**
      * Set the value of id
      *
@@ -82,7 +72,6 @@ class Product {
     {
         return $this->sku;
     }
-
     /**
      * Set the value of sku
      *
@@ -94,7 +83,6 @@ class Product {
 
         return $this;
     }
-
     /**
      * Get the value of name
      */ 
@@ -102,7 +90,6 @@ class Product {
     {
         return $this->name;
     }
-
     /**
      * Set the value of name
      *
@@ -114,7 +101,6 @@ class Product {
 
         return $this;
     }
-
     /**
      * Get the value of price
      */ 
@@ -122,7 +108,6 @@ class Product {
     {
         return $this->price;
     }
-
     /**
      * Set the value of price
      *
@@ -134,7 +119,6 @@ class Product {
 
         return $this;
     }
-
     /**
      * Get the value of measure
      */ 
@@ -142,7 +126,6 @@ class Product {
     {
         return $this->measure;
     }
-
     /**
      * Set the value of measure
      *

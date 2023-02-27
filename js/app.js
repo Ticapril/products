@@ -1,51 +1,36 @@
 document.getElementById("productType").onclick = function() {
-    var types = document.getElementById("productType");
-    console.log('clicou!');
-    idType = types.options[types.selectedIndex].value;
-    console.log(idType)
-    switch (idType) {
-        case 'DVD':
-            //selecionar todos os forms dentro um array
-            console.log(document.getElementById("size").hasAttribute("disabled"))
-            if(document.getElementById("size").hasAttribute("disabled")){
-                console.log(document.getElementById("size").hasAttribute("disabled"))
-                document.getElementById("size").removeAttribute("disabled");
-            }
-            if(!document.getElementById("weight").hasAttribute("disabled")){
-                document.getElementById("weight").setAttribute("disabled", "");
-            }
-            if(!document.getElementById("height").hasAttribute("disabled")){
-                document.getElementById("height").setAttribute("disabled", "");
-                document.getElementById("width").setAttribute("disabled", "");
-                document.getElementById("length").setAttribute("disabled", "");
-            }
-            break;
-        case 'Book':
-                //selecionar todos os forms dentro um array
-                if(!document.getElementById("size").hasAttribute("disabled")){
-                    document.getElementById("size").setAttribute("disabled", "");
-                }
-                if(document.getElementById("weight").hasAttribute("disabled")){
-                    document.getElementById("weight").removeAttribute("disabled");
-                }
-                if(!document.getElementById("height").hasAttribute("disabled")){
-                    document.getElementById("height").setAttribute("disabled", "");
-                    document.getElementById("width").setAttribute("disabled", "");
-                    document.getElementById("length").setAttribute("disabled", "");
-                }
-            break;
-        case 'Furniture':
-                if(document.getElementById("height").hasAttribute("disabled")){
-                    document.getElementById("height").removeAttribute("disabled");
-                    document.getElementById("width").removeAttribute("disabled");
-                    document.getElementById("length").removeAttribute("disabled");
-                }
-                if(!document.getElementById("size").hasAttribute("disabled")){
-                    document.getElementById("size").setAttribute("disabled", "");
-                }
-                if(!document.getElementById("weight").hasAttribute("disabled")){
-                    document.getElementById("weight").setAttribute("disabled", "");
-                }
-            break;
+    //recebo do front-end o item selecionado
+    let selectedType = document.getElementById("productType");
+    selectedType = selectedType.options[selectedType.selectedIndex].value;
+    //defino os tipos e os seus respectivos ids no front-end
+    const types =
+    {
+        "DVD": "#size-div" ,
+        "Book": "#weight-div" ,
+        "Furniture": "#dimension-div" ,
+        "select_option": "#save-product button"
+    };
+    createAndRemoveForm(selectedType,types[selectedType]);  
+    function createAndRemoveForm(type, selector) {
+        const className = "d-none";
+        document.querySelector('#save-product button').removeAttribute("disabled"); // removo o atributo disabled
+        document.querySelector(selector).classList.remove("d-none");
+        if(type == 'DVD')addClass(types['Book'],types['Furniture'], className);
+        else if(type == 'Book')addClass(types['DVD'],types['Furniture'], className);
+        else if(type == 'Furniture')addClass(types['DVD'],types['Book'], className);
+        else if(type == 'select_option'){
+            document.querySelector('#save-product button').setAttribute("disabled", "");
+            addClass(types['DVD'], types['Book'], types['Furniture'], className);
+        }
+    }
+    function addClass(selectorOne,selectorTwo,className){
+        document.querySelector(selectorOne).classList.add(className);
+        document.querySelector(selectorTwo).classList.add(className);
+    }
+    function addClass(selectorOne,selectorTwo,selectorThree,className){
+        console.log(selectorOne, selectorTwo, selectorThree, className);
+        document.querySelector(selectorOne).classList.add(className);
+        document.querySelector(selectorTwo).classList.add(className);
+        document.querySelector(selectorThree).classList.add(className);
     }
 }
