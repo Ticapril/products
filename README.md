@@ -1,54 +1,44 @@
-CRD com PHP orientado a objetos, PDO e MySQL - Scandiweb
-Código da implementação de um CRUD com PHP orientado a objetos e MySQL.
-Banco de dados
+# Object Oriented PHP, PDO and MySQL - Scandiweb Code for implementing a CRUD with object-oriented PHP and MySQL.
 
-1 - Passo: Crie um banco de dados e execute as instruções SQLs abaixo para criar a tabela vagas:
---
-Banco de dados: `scandiweb`
---
--- --------------------------------------------------------
-Estrutura da tabela `products`
---
-CREATE TABLE `products` (
-  `id` int(30) NOT NULL,
-  `sku` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `price` double NOT NULL,
-  `measure` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
--- --------------------------------------------------------
+## Database
+Create a database and execute the SQL instructions above to create the table `products`:
 
-Estrutura da tabela `product_specific`
---
+```sql
+  CREATE TABLE `products`(
+  	`id` int(30) NOT NULL,
+  	`sku` varchar(255) NOT NULL,
+  	`name` varchar(255) NOT NULL,
+  	`price` float NOT NULL,
+  	`measure` varchar(255) NOT NULL,
+  	PRIMARY KEY (`id`) USING BTREE
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
+## table struct `product_specific`
+
+```sql
 CREATE TABLE `product_specific` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
--- --------------------------------------------------------
-Extraindo dados da tabela `product_specific`
---
+```
+## Extracting data from the table `product_specific`
+
+```sql
 INSERT INTO `product_specific` (`id`, `name`) VALUES
 (1, 'DVD'),
 (2, 'Book'),
 (3, 'Furniture');
--- --------------------------------------------------------
-Configuração
---
-COLLATE='utf8_general_ci'
-ENGINE=InnoDB
-AUTO_INCREMENT=1;
--- --------------------------------------------------------
+```
 
-As credenciais do banco de dados estão no arquivo ./app/Db/Database.php e você deve alterar para as configurações do seu ambiente (HOST, NAME, USER e PASS).
---
-Composer
---
-Para a aplicação funcionar, é necessário rodar o Composer para que sejam criados os arquivos responsáveis pelo autoload das classes.
+## Settings
+The database credentials are in the `./app/Db/Database.php` file and you must change it to your environment settings (HOST, NAME, USER and PASS).
 
-Caso não tenha o Composer instalado, baixe pelo site oficial: https://getcomposer.org/download
+## Composer
+For the application to work, it is necessary to run Composer so that the files responsible for autoloading the classes are created.
 
-Para rodar o composer, basta acessar a pasta do projeto e executar o comando abaixo em seu terminal:
---
-composer install
---
-Após essa execução uma pasta com o nome vendor será criada na raiz do projeto e você já poderá acessar pelo seu navegador.
+To run composer, just access the project folder and run the command below in your terminal:
+```shell
+ composer install
+```
+After this execution, a folder with the name `vendor` will be created in the root of the project and you will be able to access it through your browser.

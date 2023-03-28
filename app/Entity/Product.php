@@ -15,16 +15,15 @@ class Product {
     //functions
 
     public function create($measure){
-        //insert infomacoes no objeto antes de inserir no banco
         $this->setSku($_POST['sku_product']);
         $this->setName($_POST['name_product']);
         $this->setPrice($_POST['price_product']);
         $this->setMeasure($measure);
         //Insert Product in Database
         $objectDatabase = new Database('products');
+        //assign the Product ID in the instance
         $this->setId($objectDatabase->insert(["sku" => $this->getSku(),"name" => $this->getName(),"price" => $this->getPrice(),"measure" => $this->getMeasure()])) ;
-        //atribuir o ID do Produto na instancia
-        //retornar sucesso
+        //redirect the page with status success
         header('location: index.php?status=success');
         exit;
     }

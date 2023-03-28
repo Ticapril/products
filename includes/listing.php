@@ -5,7 +5,7 @@
         $result .= '
                        <div class="card text-bg-light mb-3 col">
                             <div class="card-header"><li class="list-group-item">
-                                    <input name="id[' . $product->getId() . ']" class="form-check-input delete-checkbox" type="checkbox" value="">
+                                <input name="id[' . $product->getId() . ']" class="form-check-input delete-checkbox" type="checkbox" value="">
                             </li>
                             </div>
                                 <div class="card-body text-center">

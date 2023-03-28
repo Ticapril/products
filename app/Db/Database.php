@@ -10,8 +10,8 @@ class Database {
     const USER = 'root';
     const PASSWORD = '';
 
-    //nome da tabela a ser manipulada
-    private $table;
+     
+    private $table; //name of the table
     private $connection;
 
     public function __construct($table = null)
@@ -37,41 +37,41 @@ class Database {
         }
     }
     public function insert($values){
-        //DADOS DA QUERY
-        $fields = array_keys($values); // transformar os campos em um array com index numérico
+        //Query DATA
+        $fields = array_keys($values); // transform fields into an array with numeric index
         $binds = array_pad([], count($fields), '?');
         $query = 'INSERT INTO '.$this->table.'('.implode(",", $fields).') VALUES ('.implode(",", $binds).')';
-        //executa o insert
+        //execute the insert
         $this->execute($query, array_values($values));
-        //retorna o id Inserido
+        //return id inserted
         return $this->connection->lastInsertId();
     }
     public function select($where = null, $order = null, $limit = null, $fields = '*'){
-        //DADOS DA QUERY
+        //QUERY DATA
         $where = strlen($where) ? 'WHERE '.$where : '';
         $order = strlen($order) ? 'ORDER BY '.$order : '';
         $limit = strlen($limit) ? 'LIMIT '.$limit : '';
-        //MONTA A QUERY
+        //MOUNT QUERY
         $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
-        //EXECUTA A QUERY
+        //EXECUTE QUERY
         return $this->execute($query);
     }
     public function delete($where){
-        //MONTA A QUERY
+        //MOUNT QUERY
         $query = 'DELETE FROM '.$this->table.' WHERE '.$where;
-        //EXECUTA A QUERY
+        //EXECUTE QUERY
         $this->execute($query);
-        //RETORNA SUCESSO
+        //RETURN SUCCESS
         return true;
     }
     public function getCategories($where = null, $order = null, $limit = null, $fields = '*'){
-        //DADOS DA QUERY
+        //QUERY DATA
         $where = strlen($where) ? 'WHERE '.$where : '';
         $order = strlen($order) ? 'ORDER BY '.$order : '';
         $limit = strlen($limit) ? 'LIMIT '.$limit : '';
-        //MONTA A QUERY
+        //MOUNT QUERY
         $query = 'SELECT '.$fields.' FROM '.$this->table.' '.$where.' '.$order.' '.$limit;
-        //EXECUTA A QUERY
+        //EXECUTE QUERY
         return $this->execute($query);
     }
 }

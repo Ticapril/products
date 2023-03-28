@@ -28,11 +28,11 @@
         <div class="form-group">
             <label>Type Switcher</label>
             <select id="productType" class="form-select" name="select_specific_product">
-                <option name="select_option">Select the option</option>
+                <option name="select_option">Choose</option>
                 <?php
                 use \App\Entity\SpecificProduct;
-                $Test = new SpecificProduct();
-                $specificProducts = $Test->getCategories();
+                $specificProduct = new SpecificProduct();
+                $specificProducts = $specificProduct->getCategories();
                 foreach ($specificProducts as $specificProduct) {
                     echo '<option name="'.$specificProduct->getName().'">'.$specificProduct->getName().'</option>';
                 }

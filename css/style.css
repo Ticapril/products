@@ -1,23 +1,21 @@
+/* Global Style */
 .wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 1em;
 }
-
 .btn-display-product-list{
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 80px;
     justify-content: end;
 } 
-
 .btn-display{
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 80px;
 } 
-
 .btn-group-form-page {
     display: grid;
     grid-auto-flow: column;
