@@ -4,9 +4,27 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitdc58bce451da14de56807444ef295d17
+class ComposerStaticInit7728c11d68e0a2a82457f92c21ed46bf
 {
+    public static $files = array (
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'T' => 
+        array (
+            'Twig\\' => 5,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
+        ),
+        'C' => 
+        array (
+            'CoffeeCode\\Router\\' => 18,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -14,6 +32,22 @@ class ComposerStaticInitdc58bce451da14de56807444ef295d17
     );
 
     public static $prefixDirsPsr4 = array (
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'CoffeeCode\\Router\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/coffeecode/router/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -27,9 +61,9 @@ class ComposerStaticInitdc58bce451da14de56807444ef295d17
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitdc58bce451da14de56807444ef295d17::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitdc58bce451da14de56807444ef295d17::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitdc58bce451da14de56807444ef295d17::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7728c11d68e0a2a82457f92c21ed46bf::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7728c11d68e0a2a82457f92c21ed46bf::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit7728c11d68e0a2a82457f92c21ed46bf::$classMap;
 
         }, null, ClassLoader::class);
     }

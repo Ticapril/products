@@ -1,8 +1,23 @@
 {
     "name": "scandiweb/products",
-    "autoload": {
-        "psr-4": {
-            "App\\":"app/"
+    "description": "Project Scandiweb a simple CRUD Develop by Gabriel Oliveira",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabriel Costa de Oliveira",
+            "email":"gb.oliveirati@gmail.com"
         }
+    ],
+    "autoload":
+    {
+        "psr-4":
+        {
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.5",
+        "coffeecode/router":"1.0.*" 
     }
 }
